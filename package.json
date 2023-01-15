@@ -4,7 +4,8 @@
   "description": "Server for chat application",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "build": "nodemon index.js"
   },
   "author": "Manish Das",
   "license": "MIT",
