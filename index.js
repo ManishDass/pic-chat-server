@@ -4,6 +4,12 @@ const io = require('socket.io')(http, {cors: {origin: "*"}});
 const port = process.env.PORT || 3000;
 const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
 
+console.log("Running")
+
+app.get('/',(req, res)=>{
+  res.send("Hello")
+})
+
 io.on('connection', (socket) => {
   console.log('a user connected'); //Log if user joins
 
