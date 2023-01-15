@@ -30,6 +30,6 @@ io.on('connection', (socket) => {
 //   });
 });
 
-http.listen(3000, () => {
+http.listen(port, () => {
   console.log(`Chat Testing server running at http://localhost:${port}/`);
 });
