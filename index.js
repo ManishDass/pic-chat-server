@@ -1,6 +1,4 @@
 const { writeFile } = require('fs');
-const compression = require('compression');
-var cache = require('cache-control');
 const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http, {cors: {origin: "*"},maxHttpBufferSize: 1e8 });
@@ -9,22 +7,6 @@ const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
 
 //maxHttpBufferSize: 1e8 // 100 MB
 console.log("Running")
-
-app.use(compression())
-
-app.use(cache({
-  '/index.html': 5000,
-  '/none/**/*.html': 5000,
-  '/private.html': 'private, max-age=300',
-  '/**': 5000000 // Default to caching all items for 500,
-}));
-
-app.use(express.static(__dirname + '/public', {
-  maxAge: 86400000,
-  setHeaders: function(res, path) {
-      res.setHeader("Expires", new Date(Date.now() + 2592000000*30).toUTCString());
-    }
-}))
 
 app.get('/',(req, res)=>{
   res.send("Server is running fine")
